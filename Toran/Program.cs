@@ -7,8 +7,9 @@ using Toran.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BoiappContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BoiappConnection"))
-);
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("BoiappConnection"),
+        new MySqlServerVersion(new Version(8, 0, 0))));
 
 builder.Services.AddScoped<IToranRepository, ToranRepository>();
 builder.Services.AddScoped<IToranStatusRepository, ToranStatusRepository>();

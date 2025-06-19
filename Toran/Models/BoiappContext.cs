@@ -19,7 +19,7 @@ namespace Toran.Models
         public virtual DbSet<ToranStatus> ToranStatuses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Server=DESKTOP-UT7PC9L;Database=BOIAPP;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseMySql("server=127.0.0.1;port=3306;database=boiapp;user=root;password=1234", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.31-mysql"));
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
