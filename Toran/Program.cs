@@ -5,11 +5,7 @@ using Toran.DAL;
 using Toran.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddDbContext<BoiappContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("BoiappConnection"),
-        new MySqlServerVersion(new Version(8, 0, 0))));
+builder.Services.AddDbContext<BoiappContext>();
 
 builder.Services.AddScoped<IToranRepository, ToranRepository>();
 builder.Services.AddScoped<IToranStatusRepository, ToranStatusRepository>();

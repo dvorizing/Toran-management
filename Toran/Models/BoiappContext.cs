@@ -6,20 +6,20 @@ namespace Toran.Models
 {
     public partial class BoiappContext : DbContext
     {
-        public BoiappContext()
+        private readonly string _connectionString;
+
+        public BoiappContext(DbContextOptions<BoiappContext> options, IConfiguration config)
+      : base(options)
         {
+            _connectionString = config.GetConnectionString("BoiappConnection");
         }
 
-        public BoiappContext(DbContextOptions<BoiappContext> options)
-            : base(options)
-        {
-        }
 
         public virtual DbSet<ToranModel> Torans { get; set; }
         public virtual DbSet<ToranStatus> ToranStatuses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=127.0.0.1;port=3306;database=boiapp;user=root;password=1234", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.31-mysql"));
+        => optionsBuilder.UseMySql(_connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.31-mysql"));
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
