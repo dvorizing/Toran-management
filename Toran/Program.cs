@@ -15,7 +15,7 @@ builder.Services.AddScoped<SendMailToToran>(provider =>
 {
     var calculator = provider.GetRequiredService<ToranDutyCalculator>();
     var config = provider.GetRequiredService<IConfiguration>();
-    var sendGridApiKey = config["SendGrid:ApiMail"];
+    var sendGridApiKey = config["ApiMail"];
     return new SendMailToToran(calculator, sendGridApiKey);
 });
 builder.Services.AddControllers();

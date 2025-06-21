@@ -11,7 +11,7 @@ namespace Toran.Models
         public BoiappContext(DbContextOptions<BoiappContext> options, IConfiguration config)
       : base(options)
         {
-            _connectionString = config.GetConnectionString("BoiappConnection");
+            _connectionString = config["BoiappConnection"];
         }
 
 
