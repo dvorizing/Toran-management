@@ -4,3 +4,6 @@ appsettings.Development.json
 
 .vs/
 *.suo
+
+Toran/bin/
+Toran/obj/
